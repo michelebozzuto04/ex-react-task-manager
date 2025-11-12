@@ -1,15 +1,29 @@
 import { useGlobalContext } from '../contexts/GlobalContext'
+import TaskRow from '../components/TaskRow'
 
 function TaskList() {
     const { tasks } = useGlobalContext()
 
     return (
-        <div>
+        <div className='container'>
             <h1>Le tue task</h1>
-            <ul>
+
+            <div className='tasksTable'>
+                <div className="tableHeader">
+                    <div className='tableHeaderCell'>Nome</div>
+                    <div className='tableHeaderCell'>Stato</div>
+                    <div className='tableHeaderCell'>Data di creazione</div>
+                </div>
                 {tasks.map(task => (
-                    <li key={task.id}>{task.title}</li>
+                    <TaskRow
+                        key={task.id}
+                        title={task.title}
+                        status={task.status}
+                        createdAt={task.createdAt}
+                    />
                 ))}
+            </div>
+            <ul>
             </ul>
         </div>
     )
