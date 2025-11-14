@@ -33,6 +33,11 @@
   margin: 0 auto;
   max-width: 1200px;
   width: 90%;
+
+
+  h1 {
+    margin: 20px 0px;
+  }
 }
 
 .tasksTable {
