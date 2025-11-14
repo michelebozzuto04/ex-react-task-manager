@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import useTasks from '../hooks/useTasks';
 
 function AddTask() {
 
@@ -7,6 +8,7 @@ function AddTask() {
     const statusRef = useRef('');
     const symbols = "!@#$%^&*()-_=+[]{}|;:'\\\",.<>?/`~";
     const [error, setError] = useState('');
+    const { addTask } = useTasks();
 
     function checkString(validationString, value) {
         if (!value || value.trim() === "") return false;
@@ -17,7 +19,7 @@ function AddTask() {
             }
         }
 
-        return true; // valid string
+        return true;
     }
 
     function handleSubmit(e) {
@@ -29,7 +31,12 @@ function AddTask() {
 
         if (isTitleValid) {
             setError(null);
-            console.log({ title, description, status })
+            console.log({ title, description, status });
+            try {
+                addTask({ title, description, status });
+            } catch (err) {
+                console.log(err)
+            }
         } else {
             setError('Il titolo non può essere vuoto e non può contenere simboli speciali.')
             console.log('Qualcosa è sbagliato...')
