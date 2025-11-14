@@ -7,10 +7,24 @@ function NavBar() {
             <nav>
                 <ul className='headerList'>
                     <li>
-                        <NavLink to={'/'}>Le tue task</NavLink>
+                        <NavLink
+                            className={({ isActive }) =>
+                                isActive ? "navActive" : ""
+                            }
+                            to={'/'}
+                        >
+                            Le tue task
+                        </NavLink>
                     </li>
                     <li>
-                        <NavLink to={'/add'}>Aggiungi task</NavLink>
+                        <NavLink
+                            className={({ isActive }) =>
+                                isActive ? "navActive" : ""
+                            }
+                            to={'/add'}
+                        >
+                            Aggiungi task
+                        </NavLink>
                     </li>
                 </ul>
             </nav>

@@ -18,7 +18,12 @@
     gap: 20px;
 
     a {
-      color: rgba(0, 0, 0, 0.5);
+      color: rgba(0, 0, 0, 0.4);
+      text-decoration: none;
+    }
+
+    .navActive {
+      color: #000;
       text-decoration: none;
     }
 
@@ -72,4 +77,39 @@
       background-color: aliceblue;
     }
   }
+}
+
+form {
+
+  input,
+  select,
+  textarea {
+    display: block;
+    width: 300px;
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 18px;
+  }
+
+  .inputError {
+    outline: 1px solid red;
+  }
+
+  .formButton {
+    background-color: #000;
+    color: #fff;
+    border: none;
+  }
+
+  .formButton:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+  }
+}
+
+.errorMessage {
+  width: 300px;
+  color: red;
+  margin-bottom: 20px;
 }
