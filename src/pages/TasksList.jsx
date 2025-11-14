@@ -17,9 +17,7 @@ function TaskList() {
                 {tasks.map(task => (
                     <TaskRow
                         key={task.id}
-                        title={task.title}
-                        status={task.status}
-                        createdAt={task.createdAt}
+                        task={task}
                     />
                 ))}
             </div>

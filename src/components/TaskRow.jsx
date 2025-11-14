@@ -1,6 +1,7 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
-const TaskRow = React.memo(function TaskRow({ title, status, createdAt }) {
+const TaskRow = React.memo(function TaskRow({ task }) {
 
     function getBackgroundColor(status) {
         switch (status.toLowerCase()) {
@@ -15,14 +16,16 @@ const TaskRow = React.memo(function TaskRow({ title, status, createdAt }) {
 
     return (
         <div className="tableRow">
-            <div className='tableRowCell'>{title}</div>
+            <div className='tableRowCell'>
+                <NavLink to={`/task/${task.id}`}>{task.title}</NavLink>
+            </div>
             <div
-                style={{ backgroundColor: getBackgroundColor(status) }}
+                style={{ backgroundColor: getBackgroundColor(task.status) }}
                 className='tableRowCell'
             >
-                {status}
+                {task.status}
             </div>
-            <div className='tableRowCell'>{createdAt.toLocaleString()}</div>
+            <div className='tableRowCell'>{task.createdAt.toLocaleString()}</div>
         </div>
     )
 });
