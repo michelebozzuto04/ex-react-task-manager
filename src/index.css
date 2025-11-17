@@ -119,7 +119,7 @@ form {
   margin-bottom: 20px;
 }
 
-button {
+.formButton {
   display: block;
   width: 300px;
   margin-bottom: 15px;
@@ -130,8 +130,68 @@ button {
   border: none;
 }
 
-button:hover {
+.formButton:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
+}
+
+.modalPage {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  background-color: #fff;
+  padding: 20px;
+
+  .modalAction {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    .confirmButton {
+      display: block;
+      width: 200px;
+      margin-bottom: 15px;
+      padding: 15px;
+      font-size: 18px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+    }
+
+    .confirmButton:hover {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+    }
+
+    .closeButton {
+      display: block;
+      width: 200px;
+      margin-bottom: 15px;
+      padding: 15px;
+      font-size: 18px;
+      background-color: #e8e8e8;
+      border: none;
+    }
+
+    .closeButton:hover {
+      cursor: pointer;
+      background-color: #cfcfcf;
+      color: #000;
+    }
+  }
 }
