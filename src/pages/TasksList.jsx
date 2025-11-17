@@ -2,7 +2,7 @@ import { useGlobalContext } from '../contexts/GlobalContext'
 import TaskRow from '../components/TaskRow'
 
 function TaskList() {
-    const { tasks } = useGlobalContext()
+    const { tasks } = useGlobalContext();
 
     return (
         <div className='container'>

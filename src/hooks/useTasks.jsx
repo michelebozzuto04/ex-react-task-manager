@@ -1,38 +1,29 @@
 import { useEffect, useState } from "react";
+import { useGlobalContext } from "../contexts/GlobalContext";
 
 export default function useTasks() {
 
-    const [tasks, setTasks] = useState([]);
+    const { tasks, setTasks } = useGlobalContext();
     const tasks_url = import.meta.env.VITE_TASKS_URL;
-
-    useEffect(() => {
-        fetch(tasks_url)
-            .then(res => res.json())
-            .then(data => {
-                setTasks(data);
-            })
-            .catch(error => console.log(error))
-    }, [])
 
     async function addTask(taskObj) {
         try {
-            await fetch(tasks_url, {
-                method: 'POST',
-                body: JSON.stringify(taskObj),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.success === true) {
-                        setTasks(curr => [...curr, taskObj])
-                    } else {
-                        throw new Error(data.message)
-                    }
-                });
+            const res = await fetch(tasks_url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(taskObj)
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                setTasks(curr => [...curr, data.task]);
+            } else {
+                throw new Error(data.message);
+            }
+
         } catch (err) {
-            console.error('Errore nella richesta API:', err.message)
+            console.error("Errore nella richiesta API:", err.message);
         }
     }
 

@@ -5,14 +5,23 @@ const GlobalContext = createContext()
 
 function GlobalProvider({ children }) {
 
-    const { tasks, addTask, removeTask, updateTask } = useTasks();
+    const [tasks, setTasks] = useState([]);
+    const tasks_url = import.meta.env.VITE_TASKS_URL;
+
+    useEffect(() => {
+        fetch(tasks_url)
+            .then(res => res.json())
+            .then(data => {
+                setTasks(data);
+                console.log('Initial data from global context:', data)
+            })
+            .catch(error => console.log(error))
+    }, [])
 
     return (
         <GlobalContext.Provider value={{
             tasks,
-            addTask,
-            removeTask,
-            updateTask
+            setTasks
         }}>
             {children}
         </GlobalContext.Provider>
