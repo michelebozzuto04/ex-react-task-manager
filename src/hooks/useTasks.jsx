@@ -27,8 +27,31 @@ export default function useTasks() {
         }
     }
 
-    function removeTask() {
+    async function removeTask(id) {
+        try {
+            const res = await fetch(`${tasks_url}/${id}`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" }
+            });
 
+            const data = await res.json();
+
+            if (data.success) {
+                setTasks(curr => {
+                    console.log(curr)
+                    const filteredTasks = curr.filter(task => task.id !== id);
+                    console.log('filteredTasks:', filteredTasks)
+                    return filteredTasks
+                });
+
+                return { success: true }
+            } else {
+                throw new Error(data.message);
+            }
+
+        } catch (err) {
+            return { success: false, message: err.message }
+        }
     }
 
     function updateTask() {
