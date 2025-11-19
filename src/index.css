@@ -85,6 +85,7 @@
 }
 
 form {
+  align-self: center;
 
   input,
   select,
@@ -119,7 +120,7 @@ form {
   margin-bottom: 20px;
 }
 
-.formButton {
+.detailButton {
   display: block;
   width: 300px;
   margin-bottom: 15px;
@@ -130,7 +131,7 @@ form {
   border: none;
 }
 
-.formButton:hover {
+.detailButton:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
@@ -149,12 +150,17 @@ form {
 }
 
 .modalContainer {
+  width: 450px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   justify-content: center;
   background-color: #fff;
   padding: 20px;
+
+  .modalTitle {
+    align-self: center;
+  }
 
   .modalAction {
     display: flex;

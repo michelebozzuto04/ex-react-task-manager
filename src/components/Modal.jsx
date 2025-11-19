@@ -5,8 +5,8 @@ function Modal({ title, content, show, onClose, onConfirm, confirmText = "Confer
     return show && createPortal(
         <div className='modalPage'>
             <div className='modalContainer'>
-                <h2>{title}</h2>
-                <p>{content}</p>
+                <h2 className='modalTitle'>{title}</h2>
+                {content}
 
                 <div className='modalAction'>
                     <button

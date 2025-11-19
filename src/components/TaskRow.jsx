@@ -25,7 +25,7 @@ const TaskRow = React.memo(function TaskRow({ task }) {
             >
                 {task.status}
             </div>
-            <div className='tableRowCell'>{task.createdAt.toLocaleString()}</div>
+            <div className='tableRowCell'>{new Date(task.createdAt).toLocaleString()}</div>
         </div>
     )
 });
