@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import useTasks from "../hooks/useTasks";
 import Modal from "../components/Modal";
 import EditTaskModal from "../components/EditTaskModal";
+import { IoIosArrowBack } from "react-icons/io";
 
 function TaskDetail() {
 
@@ -46,26 +47,43 @@ function TaskDetail() {
     return (
         <>
             <div className="container">
-                <h1>{currentTask?.title}</h1>
-                <p>{currentTask?.description}</p>
-                <p>{currentTask?.status}</p>
-                <p>{new Date(currentTask?.createdAt).toLocaleString()}</p>
+                <h3
+                    className="backButton"
+                    onClick={() => navigate('/')}
+                >
+                    <IoIosArrowBack />
+                    Torna indietro
+                </h3>
+                <div className="taskDetails">
+                    <h1>{currentTask?.title}</h1>
+                    <p className="taskDescription">{currentTask?.description}</p>
+                    <div
+                        className={`taskStatus
+                            ${currentTask?.status === "To do" ? "taskStatusToDo" :
+                                currentTask?.status === "Doing" ? "taskStatusDoing" :
+                                    "taskStatusDone"}
+                        `}
+                    >
+                        {currentTask?.status}
+                    </div>
+                    <p className="taskDate">{new Date(currentTask?.createdAt).toLocaleString()}</p>
 
-                <button
-                    onClick={() => setShow(true)}
-                    className="detailButton"
-                >
-                    Elimina task
-                </button>
-                <button
-                    onClick={() => {
-                        setUpdateShow(true)
-                        console.log(currentTask)
-                    }}
-                    className="detailButton"
-                >
-                    Modifica task
-                </button>
+                    <button
+                        onClick={() => setShow(true)}
+                        className="detailButton"
+                    >
+                        Elimina task
+                    </button>
+                    <button
+                        onClick={() => {
+                            setUpdateShow(true)
+                            console.log(currentTask)
+                        }}
+                        className="detailButton"
+                    >
+                        Modifica task
+                    </button>
+                </div>
             </div>
             <Modal
                 title={'Elimina task'}

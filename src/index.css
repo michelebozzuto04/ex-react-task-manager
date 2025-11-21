@@ -5,14 +5,16 @@
   font-family: sans-serif;
 }
 
+/* Header */
 .headerContainer {
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   padding: 30px 20px;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(30px);
 
   .headerList {
     list-style: none;
@@ -38,52 +40,7 @@
   }
 }
 
-.container {
-  margin: 120px auto 30px auto;
-  max-width: 1200px;
-  width: 90%;
-
-
-  h1 {
-    margin: 20px 0px;
-  }
-}
-
-.tasksTable {
-  background-color: aliceblue;
-  margin-bottom: 20px;
-
-  .tableHeader {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    background-color: black;
-
-    .tableHeaderCell {
-      padding: 20px 20px;
-      font-size: 18px;
-      background-color: aliceblue;
-    }
-  }
-
-  .tableRow {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    background-color: black;
-
-    .tableRowCell {
-      padding: 20px 20px;
-      font-size: 18px;
-      background-color: aliceblue;
-    }
-  }
-}
-
+/* Generics */
 form {
   align-self: center;
 
@@ -114,12 +71,6 @@ form {
   }
 }
 
-.errorMessage {
-  width: 300px;
-  color: red;
-  margin-bottom: 20px;
-}
-
 .detailButton {
   display: block;
   width: 300px;
@@ -137,6 +88,161 @@ form {
   color: #fff;
 }
 
+.container {
+  margin: 120px auto 30px auto;
+  max-width: 1200px;
+  width: 90%;
+
+
+  h1 {
+    font-weight: 800;
+    margin: 20px 0px;
+  }
+}
+
+/* Table */
+.tasksTable {
+  background-color: aliceblue;
+  margin-bottom: 20px;
+  border-radius: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+
+  .tableHeader {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+
+    .tableHeaderCell {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      padding: 30px 20px;
+      font-size: 18px;
+      background-color: aliceblue;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .tableHeaderCell:first-of-type {
+      border-top-left-radius: 40px;
+    }
+
+    .tableHeaderCell:last-of-type {
+      border-top-right-radius: 40px;
+    }
+
+    .tableHeaderCell:hover {
+      cursor: pointer;
+      background-color: rgb(221, 228, 234);
+    }
+  }
+
+  .tableRow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    .tableRowCell {
+      display: flex;
+      justify-content: center;
+      padding: 30px 20px;
+      font-size: 18px;
+      background-color: #fff;
+    }
+
+  }
+
+  .tableRow:last-of-type {
+    border-bottom: none;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+
+    .tableRowCell:first-of-type {
+      border-bottom-left-radius: 40px;
+    }
+
+    .tableRowCell:last-of-type {
+      border-bottom-right-radius: 40px;
+    }
+  }
+
+  .tableRow:hover {
+
+    .tableRowCell {
+      cursor: pointer;
+      background-color: rgb(234, 240, 246);
+    }
+  }
+
+  .errorMessage {
+    width: 300px;
+    color: red;
+    margin-bottom: 20px;
+  }
+}
+
+/* Task Detail Page */
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.backButton:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.taskDetails {
+  padding: 20px 30px;
+  background-color: aliceblue;
+  border-radius: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.taskDescription {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.taskStatus {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+}
+
+.taskStatusToDo {
+  background-color: rgba(224, 0, 0, 0.3);
+}
+
+.taskStatusDoing {
+  background-color: rgba(224, 209, 0, 0.3);
+}
+
+.taskStatusDone {
+  background-color: rgba(0, 224, 0, 0.3);
+}
+
+.taskDate {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* Modal */
 .modalPage {
   width: 100vw;
   height: 100vh;
