@@ -1,16 +1,36 @@
 import { useGlobalContext } from '../contexts/GlobalContext'
 import TaskRow from '../components/TaskRow'
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+
+function debounce(callback, delay) {
+    let timer;
+    return (value) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            callback(value);
+        }, delay);
+    };
+}
 
 function TaskList() {
     const { tasks } = useGlobalContext();
     const [sortBy, setSortBy] = useState('createdAt');
     const [sortOrder, setSortOrder] = useState(1);
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const updateSearchCallback = useCallback(debounce((e) => {
+        setSearchQuery(e.target.value)
+    }, 500), []);
 
     const sortedTasks = useMemo(() => {
+        let filteredTasks = tasks;
+        if (searchQuery) {
+            filteredTasks = tasks.filter(task => task.title.toLowerCase().includes(searchQuery.toLowerCase()));
+        }
+
         if (sortBy === 'title') {
-            return tasks.sort((a, b) =>
+            return filteredTasks.sort((a, b) =>
                 sortOrder === 1 ? a.title.localeCompare(b.title, "fr", { ignorePunctuation: true }) :
                     b.title.localeCompare(a.title, "fr", { ignorePunctuation: true })
             )
@@ -23,7 +43,7 @@ function TaskList() {
                 "Done": 3
             }
 
-            return tasks.sort((a, b) => {
+            return filteredTasks.sort((a, b) => {
                 const order1 = statusOrder[a.status];
                 const order2 = statusOrder[b.status];
 
@@ -34,13 +54,13 @@ function TaskList() {
         }
 
         if (sortBy === 'createdAt') {
-            return tasks.sort((a, b) => {
+            return filteredTasks.sort((a, b) => {
                 return sortOrder === 1 ?
                     new Date(a.createdAt) - new Date(b.createdAt) :
                     new Date(b.createdAt) - new Date(a.createdAt)
             })
         }
-    }, [tasks, sortBy, sortOrder])
+    }, [tasks, sortBy, sortOrder, searchQuery])
 
     function handleHeaderClick(cellTitle) {
         return sortBy === cellTitle ? setSortOrder(sortOrder === -1 ? 1 : -1) : setSortBy(cellTitle)
@@ -52,7 +72,14 @@ function TaskList() {
 
     return (
         <div className='container'>
-            <h1>Le tue task</h1>
+            <div className='taskListHeader'>
+                <h1>Le tue task</h1>
+                <input
+                    type='text'
+                    placeholder='Cerca task...'
+                    onChange={(e) => updateSearchCallback(e)}
+                />
+            </div>
 
             <div className='tasksTable'>
                 <div className="tableHeader">

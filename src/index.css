@@ -100,7 +100,22 @@ form {
   }
 }
 
-/* Table */
+/* Task List Page */
+.taskListHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  input {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+}
+
 .tasksTable {
   background-color: aliceblue;
   margin-bottom: 20px;
@@ -126,6 +141,7 @@ form {
       font-size: 18px;
       background-color: aliceblue;
       justify-content: center;
+      align-items: center;
       font-weight: 800;
     }
 
