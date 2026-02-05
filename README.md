@@ -1,16 +1,53 @@
-# React + Vite
+# ✅ React Task Manager — CRUD App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Applicazione web per gestione task con funzionalità complete CRUD, filtri e ordinamenti dinamici.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* React.js
+* JavaScript
+* CSS
+* State management React
 
-## React Compiler
+## ✨ Funzionalità
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Creazione task
+* Modifica task
+* Eliminazione task singola e multipla
+* Ricerca per nome
+* Ordinamento crescente/decrescente
+* Filtro per stato (todo / doing / done)
+* Checkbox multi-select
+* UI responsive
 
-## Expanding the ESLint configuration
+## 🧠 Concetti Applicati
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* CRUD completo frontend
+* State management
+* Filtri dinamici
+* Ordinamento dati
+* Controlled components
+* Event handling
+* List rendering
+
+## ⚙️ Setup Locale
+
+```bash
+git clone https://github.com/michelebozzuto04/ex-react-task-manager
+cd ex-react-task-manager
+npm install
+npm run dev
+```
+
+## 🔮 Miglioramenti Futuri
+
+* Persistenza database
+* Autenticazione utente
+* Drag & drop task
+* Dashboard statistiche
+
+## 👤 Autore
+
+Michele Bozzuto
+Junior Frontend Developer
+
